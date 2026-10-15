@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harshitha.L | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6fbfa;
+  --card:#ffffff;
+  --text:#223c3a;
+  --muted:#5d7371;
+  --border:#d8ece8;
+  --primary:#17a398;
+  --primary-dark:#0f7d75;
+  --secondary:#ff9f80;
+  --accent:#7ac7c4;
+  --shadow:0 12px 30px rgba(23,163,152,.14);
+  --nav-bg:rgba(246,251,250,.9);
+}
+body.dark-mode{
+  --bg:#10201f;
+  --card:#173230;
+  --text:#e8f5f3;
+  --muted:#a8c4c1;
+  --border:#25504c;
+  --primary:#4fd1c5;
+  --primary-dark:#38b2ac;
+  --secondary:#ffb59a;
+  --accent:#7ac7c4;
+  --shadow:0 15px 35px rgba(0,0,0,.35);
+  --nav-bg:rgba(16,32,31,.92);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;transition:.3s}
+
+.theme-btn{
+  position:fixed;top:18px;right:18px;z-index:100;
+  background:var(--primary);color:#fff;border:none;
+  width:48px;height:48px;border-radius:50%;font-size:1.2rem;
+  cursor:pointer;box-shadow:var(--shadow);
+}
+.theme-btn:hover{transform:scale(1.08)}
+
+header{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:90px 20px;
+  background:linear-gradient(135deg,rgba(23,163,152,.14),rgba(255,159,128,.14)),var(--bg);
+}
+.profile-circle{
+  width:150px;height:150px;margin:0 auto 22px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:3rem;font-weight:700;box-shadow:var(--shadow);
+}
+header h1{font-size:clamp(2.2rem,6vw,3.6rem);color:var(--primary-dark)}
+header p{color:var(--muted);max-width:680px;margin:15px auto 30px}
+.btn{
+  display:inline-block;padding:13px 28px;border-radius:999px;
+  text-decoration:none;font-weight:600;margin:6px;transition:.25s;
+}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-3px)}
+.btn-outline{border:2px solid var(--primary);color:var(--primary-dark)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+
+nav{
+  position:sticky;top:0;z-index:50;background:var(--nav-bg);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
+}
+.nav-container{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
+.logo{font-weight:700;color:var(--primary-dark)}
+.nav-links{display:flex;list-style:none;gap:8px}
+.nav-links a{color:var(--muted);text-decoration:none;padding:9px 14px;border-radius:999px;font-size:.95rem}
+.nav-links a:hover{background:rgba(23,163,152,.12);color:var(--primary-dark)}
+.menu-btn{display:none;background:none;border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:10px;cursor:pointer}
+
+section{max-width:1050px;margin:auto;padding:80px 20px}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{color:var(--primary-dark);font-size:clamp(1.7rem,4vw,2.3rem)}
+.section-title p{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:25px;box-shadow:var(--shadow);transition:.25s}
+.card:hover{transform:translateY(-5px)}
+.grid{display:grid;gap:20px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+
+.about-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center}
+.about-grid p{color:var(--muted);margin-bottom:12px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;text-align:center;box-shadow:var(--shadow);margin-bottom:15px}
+.stat strong{display:block;font-size:1.5rem;color:var(--primary-dark)}
+.stat span{color:var(--muted);font-size:.9rem}
+
+.skill-group h3{color:var(--primary-dark);margin-bottom:14px}
+.chip{
+  display:inline-block;background:rgba(23,163,152,.1);
+  border:1px solid rgba(23,163,152,.25);color:var(--primary-dark);
+  padding:8px 15px;margin:5px;border-radius:999px;font-size:.88rem;
+}
+.chip:hover{background:var(--primary);color:#fff}
+
+.project h3{color:var(--primary-dark);margin-bottom:10px}
+.project p{color:var(--muted);margin-bottom:15px}
+.project a{color:var(--primary-dark);font-weight:600;text-decoration:none}
+.project a:hover{text-decoration:underline}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}
+.tags span{font-size:.75rem;background:rgba(255,159,128,.18);color:#c96a44;padding:4px 10px;border-radius:999px}
+body.dark-mode .tags span{color:var(--secondary)}
+
+.cert-card{cursor:pointer;text-align:center}
+.cert-icon{font-size:2rem;color:var(--primary);margin-bottom:10px}
+.cert-card small{color:var(--muted)}
+
+dialog{border:none;border-radius:18px;padding:18px;background:var(--card);color:var(--text);max-width:min(92vw,720px)}
+dialog::backdrop{background:rgba(16,32,31,.65)}
+dialog h3{color:var(--primary-dark);margin-bottom:12px}
+dialog img{width:100%;border-radius:12px}
+.close-btn{margin-top:14px;background:var(--primary);color:#fff;border:none;padding:10px 18px;border-radius:999px;cursor:pointer}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.contact-item{display:flex;gap:12px;align-items:center;margin-bottom:15px;color:var(--muted)}
+.contact-item a{color:var(--primary-dark);text-decoration:none;font-weight:600}
+input,textarea{
+  width:100%;padding:13px;margin-bottom:12px;border-radius:12px;
+  border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit;
+}
+input:focus,textarea:focus{outline:none;border-color:var(--primary)}
+button[type=submit]{
+  width:100%;background:var(--primary);color:#fff;border:none;
+  padding:14px;border-radius:999px;font-weight:600;cursor:pointer;
+}
+button[type=submit]:hover{background:var(--primary-dark)}
+
+footer{
+  background:var(--primary-dark);color:#fff;text-align:center;
+  padding:25px;margin-top:50px;
+}
+#topBtn{
+  position:fixed;right:20px;bottom:20px;z-index:60;
+  background:var(--primary);color:#fff;border:none;
+  width:48px;height:48px;border-radius:50%;font-size:1.1rem;
+  cursor:pointer;display:none;box-shadow:var(--shadow);
+}
+
+@media(max-width:900px){
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .menu-btn{display:block}
+  .nav-links{
+    position:absolute;top:100%;left:0;right:0;
+    background:var(--card);border-bottom:1px solid var(--border);
+    flex-direction:column;padding:10px 20px;display:none;
+  }
+  .nav-links.open{display:flex}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  section{padding:60px 18px}
+}
+</style>
+</head>
+<body>
+
+<button class="theme-btn" id="themeBtn" aria-label="Toggle theme">🌙</button>
+
+<header id="home">
+  <div>
+    <div class="profile-circle">H</div>
+    <h1>Harshitha.L</h1>
+    <p>
+      Final-year BCA student  in <strong>Full Stack Development</strong> specilization.
+      I enjoy building responsive websites, working with databases, and developing practical
+      web applications such as e-commerce stores and management systems.
+    </p>
+    <a href="#projects" class="btn btn-primary">View Projects</a>
+    <a href="#contact" class="btn btn-outline">Contact Me</a>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">Harshitha.L</div>
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="about">
+  <div class="section-title">
+    <h2>About Me</h2>
+    <p>Know more about my background and goals</p>
+  </div>
+  <div class="about-grid">
+    <div class="card">
+      <p>I am <strong>Harshitha.L</strong>, a final-year Bachelor of Computer Applications student  in <strong>Full Stack Development</strong>specialisation.</p>
+      <p>I am interested in front-end development, back-end development, databases, and creating useful real-world applications. I enjoy learning new technologies and improving my programming skills.</p>
+      <p>My projects include an <strong>Online Beauty and Cosmetics Store</strong>, <strong>FD Work</strong>, a <strong>Student Management System</strong>, and this personal portfolio website.</p>
+    </div>
+    <div>
+      <div class="stat"><strong>Final Year</strong><span>BCA — Full Stack Development</span></div>
+      <div class="stat"><strong>4+</strong><span>Projects</span></div>
+      <div class="stat"><strong>Web</strong><span>Frontend, Backend & Database</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-title">
+    <h2>My Skills</h2>
+    <p>Technical and professional skills</p>
+  </div>
+  <div class="grid grid-3">
+    <div class="card skill-group">
+      <h3>Frontend</h3>
+      <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span>
+      <span class="chip">Responsive Design</span>
+    </div>
+    <div class="card skill-group">
+      <h3>Backend</h3>
+      <span class="chip">Python</span><span class="chip">Java</span><span class="chip">Node.js Basics</span>
+      <span class="chip">REST APIs</span>
+    </div>
+    <div class="card skill-group">
+      <h3>Database</h3>
+      <span class="chip">MySQL</span><span class="chip">SQL</span><span class="chip">MongoDB Basics</span>
+      <span class="chip">Database Design</span>
+    </div>
+    <div class="card skill-group">
+      <h3>Tools</h3>
+      <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">VS Code</span>
+    </div>
+    <div class="card skill-group">
+      <h3>Computer Basics</h3>
+      <span class="chip">Networks</span><span class="chip">Operating Systems</span>
+      <span class="chip">Artificial Intelligence</span><span class="chip">Data Structures</span>
+    </div>
+    <div class="card skill-group">
+      <h3>Soft Skills</h3>
+      <span class="chip">Problem Solving</span><span class="chip">Teamwork</span>
+      <span class="chip">Communication</span><span class="chip">Time Management</span>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-title">
+    <h2>Education</h2>
+    <p>My academic qualification</p>
+  </div>
+  <div class="card">
+    <h3>BCA — Bachelor of Computer Applications</h3>
+    <p><strong>Final Year | Full Stack Development Specialization 
+    </strong> at Swamy Vivekananda Rural First Grade College-Neraluru </p>
+    <p>Learning web development, programming languages, databases, software development, networking, and application design.</p>
+  </div>
+  <br>
+  <div class="card">
+    <h3>Pre-University Course (PUC)</h3>
+    <p>Completed Pre-University education with a strong academic foundation at
+         <strong>Sri Saraswati Vidyaniketana Independent PU College-Dommasandra</strong>.</p>
+    <p>Percentage:97.66%</p>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="section-title">
+    <h2>Certifications</h2>
+    <p>Click a certificate to view its image</p>
+  </div>
+  <div class="grid grid-3">
+    <div class="card cert-card" onclick="openCert('PRIZE .jpeg','Runner up Certificate')">
+      <div class="cert-icon">🌐</div>
+      <h3>Ramkrishna and Shashi Memorial Prize</h3>
+      <small>Click to view certificate</small>
+    </div>
+    <div class="card cert-card" onclick="openCert('ATHARVA 2k26.jpeg','Achievement Certificate')">
+      <div class="cert-icon"></div>
+      <h3> Atharva 2k26 - Inter collegiate Competition</h3>
+      <small>Click to view certificate</small>
+    </div>
+    <div class="card cert-card" onclick="openCert('LOGIN 2k26.jpeg','Participation Certificate')">
+      <div class="cert-icon">🗄️</div>
+      <h3> Login 2k26 - Inter College tech fest</h3>
+      <p>organised by Christ College of Science and Management</p>
+      <small>Click to view certificate</small>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-title">
+    <h2>My Projects</h2>
+    <p>Click a project to open its GitHub repository</p>
+  </div>
+  <div class="grid grid-2">
+    <div class="card project">
+      <h3>🛍️ Online Beauty and Cosmetics Store</h3>
+      <p>An upcoming full stack e-commerce website for beauty and cosmetics products with product browsing, cart, and order features.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>MySQL</span></div>
+      <a href="https://github.com/your-username/online-beauty-cosmetics-store" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="card project">
+      <h3>💰 FD Work</h3>
+      <p>A Fixed Deposit management project to calculate and manage FD amount, interest, duration, and maturity value.</p>
+      <div class="tags"><span>Python</span><span>Database</span><span>Logic</span></div>
+      <a href="https://github.com/HarshithaL587/Fdlab/tree/main/Harshitha" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="card project">
+      <h3>🎓 Student Management System</h3>
+      <p>A system to add, update, search, and delete student records efficiently.</p>
+      <div class="tags"><span>Java</span><span>MySQL</span><span>CRUD</span></div>
+      <a href="https://github.com/HarshithaL587/pythonanywhere" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+    <div class="card project">
+      <h3>💻 Personal Portfolio</h3>
+      <p>A responsive personal portfolio website created using HTML, CSS, and JavaScript.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <a href="https://github.com/HarshithaL587/Portfolio" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-title">
+    <h2>Contact Me</h2>
+    <p>Let’s connect for opportunities and collaboration</p>
+  </div>
+  <div class="contact-grid">
+    <div class="card">
+      <h3>Contact Information</h3>
+      <div class="contact-item">📧 <a href="mailto:harshitha@example.com">harshithal274@gmail.com</a></div>
+      <div class="contact-item">📍 Bengaluru, Karnataka, India</div>
+      <div class="contact-item">🔗 <a href="https://github.com/HarshithaL587" target="_blank" rel="noopener">GitHub Profile</a></div>
+    </div>
+    <form class="card" onsubmit="sendMessage(event)">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <p id="status" style="color:var(--primary-dark);margin-top:10px"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; <span id="year"></span> Harshitha.L Portfolio | Codes with purpose</p>
+</footer>
+
+<dialog id="certDialog">
+  <h3 id="certTitle"></h3>
+  <img id="certImage" src="" alt="Certificate">
+  <br>
+  <button class="close-btn" onclick="document.getElementById('certDialog').close()">Close</button>
+</dialog>
+
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const themeBtn = document.getElementById('themeBtn');
+const body = document.body;
+
+if(localStorage.getItem('theme') === 'dark'){
+  body.classList.add('dark-mode');
+  themeBtn.textContent = '☀️';
+}
+
+themeBtn.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  const dark = body.classList.contains('dark-mode');
+  themeBtn.textContent = dark ? '☀️' : '🌙';
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+});
+
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+function openCert(image, title){
+  document.getElementById('certImage').src = image;
+  document.getElementById('certTitle').textContent = title;
+  document.getElementById('certDialog').showModal();
+}
+
+function sendMessage(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  document.getElementById('status').textContent = 'Thank you, ' + name + '! Your message has been recorded.';
+  e.target.reset();
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('topBtn').style.display = scrollY > 400 ? 'block' : 'none';
+});
+</script>
+
+</body>
+</html>
